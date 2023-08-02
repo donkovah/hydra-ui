@@ -1,3 +1,5 @@
+"use client"
+
 import { Layout, Menu, Breadcrumb, ConfigProvider, ThemeConfig, theme, Avatar, MenuProps } from 'antd';
 import React from 'react';
 

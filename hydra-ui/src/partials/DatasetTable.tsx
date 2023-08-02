@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Divider, FloatButton, Radio, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { CustomerServiceOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 interface DataType {
   key: React.Key;
@@ -133,7 +134,11 @@ const DatasetTable: React.FC = () => {
     <>
       <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
         <h3>Datasets</h3>
-        <Button className="secondary">New Test</Button>
+        <Link href={`/tests/packconf/new`}>
+          <Button className="secondary">
+            New Test
+          </Button>
+        </Link>
       </div>
       <Divider />
       <Table

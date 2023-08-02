@@ -1,12 +1,21 @@
 'use client';
 
 import { Layout, Menu, Breadcrumb, ConfigProvider, ThemeConfig, theme, Avatar, MenuProps } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TranslationTable from '@/partials/TranslationTable';
 import HeaderNav from '@/partials/HeaderNav';
 import SideBar from '@/partials/SideBar';
 
 const { Content, Footer } = Layout;
+async function getTranslations() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/') 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+ console.log(res)
+  return res.json()
+}
+
 
 const HomePage: React.FC = () => {
   const {
@@ -28,7 +37,7 @@ const HomePage: React.FC = () => {
         </Breadcrumb>
         <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
           <SideBar />
-          <Content style={{ padding: '0 24px', minHeight: 280, height: "70vh",color:"black" }}>
+          <Content style={{ padding: '0 24px', minHeight: 280,color:"black" }}>
             <TranslationTable />
           </Content>
         </Layout>

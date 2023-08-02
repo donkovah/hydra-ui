@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import TranslationTable from '@/partials/TranslationTable';
 import HeaderNav from '@/partials/HeaderNav';
 import SideBar from '@/partials/SideBar';
+import DatasetTable from '@/partials/DatasetTable';
 
 const { Content, Footer } = Layout;
 
@@ -29,7 +30,7 @@ const HomePage: React.FC = () => {
         <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
           <SideBar />
           <Content style={{ padding: '0 24px', minHeight: 280, height: "70vh",color:"black" }}>
-            <TranslationTable />
+            <DatasetTable />
           </Content>
         </Layout>
       <Footer style={{ textAlign: 'center' }}>Logistics Team ©2023</Footer>
