@@ -1,19 +1,19 @@
 "use client";
 
+import { NavigationEnv, useNavigation } from "@/context/NavigationContext";
 import {
   Layout,
   Menu,
 } from "antd";
-import React, { useState } from "react";
+import React from "react";
 
 const { Header } = Layout;
-type HeaderEnv = "DEV" | "PROD" | "UAT"
 
 const HeaderNav: React.FC = () => {
-  const [headerEnv, setHeaderEnv] = useState<HeaderEnv>('DEV');
+  const { navigationKey, setNavigationKey } = useNavigation();
 
-  const updateHeaderEnv = (env: HeaderEnv) => {
-    setHeaderEnv(env)
+  const updateHeaderEnv = (navEnvironment: NavigationEnv) => {
+    setNavigationKey(navEnvironment)
   }
 
   return (
@@ -30,22 +30,22 @@ const HeaderNav: React.FC = () => {
         >
           <Menu.Item
             key="1"
-            className={headerEnv == "DEV" ? "ant-menu-item-selected-nav" : ""}
-            onClick={()=> updateHeaderEnv('DEV')}
+            className={navigationKey == NavigationEnv.DEV ? "ant-menu-item-selected-nav" : ""}
+            onClick={()=> updateHeaderEnv(NavigationEnv.DEV)}
           >
             DEV
           </Menu.Item>
           <Menu.Item
             key="2"
-            className={headerEnv == "UAT" ? "ant-menu-item-selected-nav" : ""}
-            onClick={()=> updateHeaderEnv('UAT')}
+            className={navigationKey == NavigationEnv.UAT ? "ant-menu-item-selected-nav" : ""}
+            onClick={()=> updateHeaderEnv(NavigationEnv.UAT)}
           >
             UAT
           </Menu.Item>
           <Menu.Item
             key="3"
-            className={headerEnv == "PROD" ? "ant-menu-item-selected-nav danger" : ""}
-            onClick={()=> updateHeaderEnv('PROD')}
+            className={navigationKey == NavigationEnv.PROD ? "ant-menu-item-selected-nav danger" : ""}
+            onClick={()=> updateHeaderEnv(NavigationEnv.PROD)}
           >
             Prod
           </Menu.Item>

@@ -3,7 +3,6 @@ import React from 'react';
 import './globals.css';
 import StyledComponentsRegistry from '@/lib/AntdRegistry';
 import BodyLayout from '@/partials/BodyLayout';
-import HeaderNav from '@/partials/HeaderNav';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +15,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
     <body className={inter.className}>
       <StyledComponentsRegistry>
-          <HeaderNav />
           <BodyLayout children={children} />
       </StyledComponentsRegistry>
     </body>

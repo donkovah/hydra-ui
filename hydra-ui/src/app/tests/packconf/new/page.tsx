@@ -1,8 +1,9 @@
 "use client";
 
-import { Layout, theme, message, Steps, Button, Form, Input } from "antd";
+import { Layout, theme, message, Steps, Button, Form, Input, InputNumber } from "antd";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useImmer } from 'use-immer';
 
 const { Content } = Layout;
 
@@ -18,9 +19,15 @@ const steps = [
 ];
 
 const HomePage: React.FC = () => {
+  const testType = "PackConf"
   const { token } = theme.useToken();
   const router = useRouter();
   const [current, setCurrent] = useState(0);
+  const [testData, updateTestData] = useImmer({
+    name: 'my cool test name',
+    requestNum: 1,
+    type: testType
+  });
 
   const next = () => {
     setCurrent(current + 1);
@@ -66,17 +73,39 @@ const HomePage: React.FC = () => {
               label="Dataset Name"
               name="username"
               rules={[{ required: true }]}
+              valuePropName={testData.name}
             >
-              <Input placeholder="e.g john__test" />
+              <Input placeholder="e.g john__test" value={testData.name} />
             </Form.Item>
 
             <Form.Item
               label="Concurrent Requests"
               name="concurrent"
               rules={[{ required: true }]}
+              valuePropName="value"
             >
-              <Input type="number" />
+              <Input type="number" defaultValue={testData.requestNum} />
             </Form.Item>
+
+            <Form.Item
+              label="Concurrent Requests"
+              name="concurrent"
+              rules={[{ required: true }]}
+              valuePropName="value"
+            >
+              <Input type="number" defaultValue={testData.requestNum} />
+            </Form.Item>
+
+
+            <Form.Item
+              label="Concurrent Requests"
+              name="concurrent"
+              rules={[{ required: true }]}
+              valuePropName="value"
+            >
+              <Input type="number" defaultValue={testData.requestNum} />
+            </Form.Item>
+
           </Form>
         </div>
       )}
