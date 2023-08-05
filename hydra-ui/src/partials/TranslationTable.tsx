@@ -122,20 +122,12 @@ const onChange: TableProps<DataType>["onChange"] = (
   console.log("params", pagination, filters, sorter, extra);
 };
 
-const TranslationTable: React.FC<any> = () => {
+const TranslationTable: React.FC<any> = ({data}) => {
   const [translations, setTranslations] = useState<string[]>([]) 
 
   useEffect(() => {
-    const getTranslations = async function getTranslations() {
-      const res = await fetch('http://localhost:3001/translations') 
-      if (!res.ok) {
-        throw new Error('Failed to fetch data')
-      }
-    setTranslations(await res.json())
-    }
-    getTranslations()
-    
-  },[])
+    setTranslations(data)    
+  },[data])
 
   return (
     <>
@@ -160,7 +152,7 @@ const TranslationTable: React.FC<any> = () => {
       <Table
         columns={columns}
         style={{ paddingTop: "20px" }}
-        dataSource={translations.map((it: any,index) =>({
+        dataSource={translations?.map((it: any,index) =>({
           key: index,
           transTarget: it.target,
           transCatalog: it.catalog,
