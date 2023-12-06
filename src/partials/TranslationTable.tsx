@@ -6,110 +6,62 @@ import type { ColumnsType, TableProps } from "antd/es/table";
 
 interface DataType {
   key: React.Key;
-  transTarget: string;
-  transCatalog: number;
-  transKey: string;
-  transValue: string;
+  name: string;
+  email: number;
+  validate: string;
+  created: string;
 }
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Target",
-    dataIndex: "transTarget",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Jim",
-        value: "Jim",
-      },
-      {
-        text: "Submenu",
-        value: "Submenu",
-        children: [
-          {
-            text: "Green",
-            value: "Green",
-          },
-          {
-            text: "Black",
-            value: "Black",
-          },
-        ],
-      },
-    ],
-    onFilter: (value: string, record) => record.transKey.indexOf(value) === 0,
-    sorter: (a, b) => a.transKey.length - b.transKey.length,
-    sortDirections: ["descend"],
+    title: "Name",
+    dataIndex: "name",
+    sorter: (a, b) => a.name.localeCompare(b.name),
   },
   {
-    title: "Catalog",
-    dataIndex: "transCatalog",
+    title: "Email",
+    dataIndex: "email",
     defaultSortOrder: "descend",
-    sorter: (a, b) => a.transCatalog - b.transCatalog,
+    sorter: (a, b) => a.email - b.email,
   },
   {
-    title: "Key",
-    dataIndex: "transKey",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value: string, record) => record.transKey.indexOf(value) === 0,
+    title: "Validated",
+    dataIndex: "validate",
   },
   {
-    title: "Value",
-    dataIndex: "transValue",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    onFilter: (value: string, record) => record.transValue.indexOf(value) === 0,
+    title: "Created",
+    dataIndex: "created",
   },
 ];
 
-const data = [
+const testData:DataType[] = [
   {
     key: "1",
-    transTarget: "John Brown",
-    transCatalog: 11,
-    transKey: "New York No. 1 Lake Park",
-    transValue: "Lagos No. 1 Lake Park",
+    name: "Forto",
+    email: 11,
+    validate: "New York No. 1 Lake Park",
+    created: "Lagos No. 1 Lake Park",
   },
   {
     key: "2",
-    transTarget: "Jim Green",
-    transCatalog: 22,
-    transKey: "London No. 1 Lake Park",
-    transValue: "Ibiza No. 1 Lake Park",
+    name: "DemoUp Cliplister",
+    email: 22,
+    validate: "London No. 1 Lake Park",
+    created: "Ibiza No. 1 Lake Park",
   },
   {
     key: "3",
-    transTarget: "Joe Black",
-    transCatalog: 33,
-    transKey: "Sydney No. 1 Lake Park",
-    transValue: "Berlin No. 1 Lake Park",
+    name: "Lendis",
+    email: 33,
+    validate: "Sydney No. 1 Lake Park",
+    created: "Berlin No. 1 Lake Park",
   },
   {
     key: "4",
-    transTarget: "Jim Red",
-    transCatalog: 44,
-    transKey: "London No. 2 Lake Park",
-    transValue: "Paris No. 2 Lake Park",
+    name: "Cars 45",
+    email: 44,
+    validate: "London No. 2 Lake Park",
+    created: "Paris No. 2 Lake Park",
   },
 ];
 
@@ -123,41 +75,32 @@ const onChange: TableProps<DataType>["onChange"] = (
 };
 
 const TranslationTable: React.FC<any> = ({data}) => {
-  const [translations, setTranslations] = useState<string[]>([]) 
+  const [translations, setTranslations] = useState<DataType[]>(testData) 
 
   useEffect(() => {
-    setTranslations(data)    
-  },[data])
+    console.log(data)
+    setTranslations(testData)
+  },[testData])
 
   return (
     <>
       <div
         style={{
-          paddingBottom: "20px",
+          paddingBottom: "5px",
         }}
       >
-        <h1>Translations</h1>
+        <h2>Company</h2>
         <Divider />
-        <p>
-          Logistics sits b/w D365 and ThirdPartyLogistics (i.e warehouses) for
-          making sure On products reach their awesome new owners.
-        </p>
-        <p>
-          Every warehouse have their own usage of different terms involved in
-          our communication with them. Translations take care of ensuring that
-          D365 and warehouses are talking the same language when conducting
-          business
-        </p>
       </div>
       <Table
         columns={columns}
         style={{ paddingTop: "20px" }}
-        dataSource={translations?.map((it: any,index) =>({
-          key: index,
-          transTarget: it.target,
-          transCatalog: it.catalog,
-          transKey: it.key,
-          transValue: it.value,
+        dataSource={translations?.map((it: DataType) =>({
+          key: it.key,
+          name: it.name,
+          email: it.email,
+          validate: it.validate,
+          created: it.created,
         }))}
         onChange={onChange}
       />

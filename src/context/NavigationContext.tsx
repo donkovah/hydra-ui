@@ -7,7 +7,6 @@ interface NavigationContextType {
 
 export enum NavigationEnv {
   DEV = 'DEV',
-  UAT = 'UAT',
   PROD = 'PROD',
 }
 

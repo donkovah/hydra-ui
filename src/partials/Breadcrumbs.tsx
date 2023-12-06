@@ -10,7 +10,7 @@ const Breadcrumbs: React.FC = () => {
     <>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Translations</Breadcrumb.Item>
+        <Breadcrumb.Item>Company</Breadcrumb.Item>
       </Breadcrumb>
     </>
   );

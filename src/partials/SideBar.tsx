@@ -22,43 +22,50 @@ const SideBar: React.FC = () => {
   
   const sideMenu = [
     {
-      key: "translations",
-      path: "/",
-      label: "Translations",
+      key: "companies",
+      path: "/companies",
+      label: "Companies",
       isActive: true,
       icon: LaptopOutlined,
     },
     {
-      key: "mappings",
-      path: "/",
-      label: "Mappings",
-      isActive: false,
-      icon: ApiOutlined,
-    },
-    {
-      key: "blobs",
-      path: "/",
-      label: "Blobs",
-      isActive: false,
+      key: "promotions",
+      path: "/promotions",
+      label: "Promotions",
+      isActive: true,
       icon: ContainerOutlined,
     },
     {
-      key: "tests",
-      path: "/tests",
-      label: "Test",
+      key: "reviews",
+      path: "/reviews",
+      label: "Reviews",
+      isActive: true,
+      icon: ApiOutlined,
+    },
+    {
+      key: "featured",
+      path: "/featured",
+      label: "Featured",
+      isActive: true,
+      icon: ContainerOutlined,
+    },
+    {
+      key: "users",
+      path: "#",
+      label: "Users",
       isActive: true,
       children: [
         {
-          key: "test_packconf",
-          path: "/tests/packconf",
-          label: "PackConf (PL06)",
+          key: "admin",
+          path: "/users/admin",
+          label: "Admin",
           isActive: true,
           icon: LaptopOutlined,
         },
         {
-          key: "test_shipconf",
-          path: "/tests/shipconf",
-          label: "ShipConf (PL07)",
+          key: "users",
+          path: "/users",
+          label: "Users",
           isActive: true,
           icon: LaptopOutlined,
         },
@@ -87,7 +94,6 @@ const SideBar: React.FC = () => {
           mode="inline"
           defaultSelectedKeys={[sideMenu[0].key]}
           selectedKeys={[selectedKey]}
-          defaultOpenKeys={sideMenu.map(it => it.key)}
           style={{ height: "100%" }}
         >
           {sideMenu.map((item) =>

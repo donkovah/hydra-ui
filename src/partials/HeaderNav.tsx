@@ -36,13 +36,6 @@ const HeaderNav: React.FC = () => {
             DEV
           </Menu.Item>
           <Menu.Item
-            key="2"
-            className={navigationKey == NavigationEnv.UAT ? "ant-menu-item-selected-nav" : ""}
-            onClick={()=> updateHeaderEnv(NavigationEnv.UAT)}
-          >
-            UAT
-          </Menu.Item>
-          <Menu.Item
             key="3"
             className={navigationKey == NavigationEnv.PROD ? "ant-menu-item-selected-nav danger" : ""}
             onClick={()=> updateHeaderEnv(NavigationEnv.PROD)}
