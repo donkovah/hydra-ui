@@ -5,6 +5,7 @@ import {
   Layout,
   Menu,
 } from "antd";
+import Link from "next/link";
 import React from "react";
 
 const { Header } = Layout;
@@ -17,11 +18,12 @@ const HeaderNav: React.FC = () => {
   }
 
   return (
-    <>
-      <Header style={{ display: "flex", alignItems: "center" }}>
+    <Header style={{ display: "flex", alignItems: "center" }}>
+      <Link href={"/"}>
         <div className="demo-logo" style={{ height: "64px", display: "flex" }}>
           <img src="/logo.png" style={{ width: "120px", height: "auto" }}></img>
         </div>
+      </Link>
         <Menu
           theme="dark"
           mode="horizontal"
@@ -44,7 +46,6 @@ const HeaderNav: React.FC = () => {
           </Menu.Item>
         </Menu>
       </Header>
-    </>
   );
 };
 

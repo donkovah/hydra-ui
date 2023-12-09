@@ -1,4 +1,4 @@
-import TranslationTable from "@/partials/TranslationTable";
+import CompanyTable from "@/partials/company/CompanyTable";
 
 async function getTranslations():Promise<Response> {
   const res = await fetch("https://jsonplaceholder.typicode.com/todos/");
@@ -11,6 +11,6 @@ async function getTranslations():Promise<Response> {
 export default async function HomePage () {
   const translations = await getTranslations()
   return (
-    <TranslationTable data ={translations} />
+    <CompanyTable data ={translations} />
   );
 };

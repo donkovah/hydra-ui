@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Divider, Table } from "antd";
+import { Button, Col, Divider, Row, Space, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 
 interface DataType {
@@ -32,9 +32,21 @@ const columns: ColumnsType<DataType> = [
     title: "Created",
     dataIndex: "created",
   },
+  {
+    title: "Action",
+    key: "action",
+    render: (_, record) => (
+      <Space size="middle">
+        <Button type="primary">Edit</Button>
+        <Button type="primary" danger>
+          Delete
+        </Button>
+      </Space>
+    ),
+  },
 ];
 
-const testData:DataType[] = [
+const testData: DataType[] = [
   {
     key: "1",
     name: "Forto",
@@ -74,28 +86,35 @@ const onChange: TableProps<DataType>["onChange"] = (
   console.log("params", pagination, filters, sorter, extra);
 };
 
-const TranslationTable: React.FC<any> = ({data}) => {
-  const [translations, setTranslations] = useState<DataType[]>(testData) 
+const CompanyTable: React.FC<any> = ({ data }) => {
+  const [translations, setTranslations] = useState<DataType[]>(testData);
 
   useEffect(() => {
-    console.log(data)
-    setTranslations(testData)
-  },[testData])
+    console.log(data);
+    setTranslations(testData);
+  }, [testData]);
 
   return (
     <>
-      <div
-        style={{
-          paddingBottom: "5px",
-        }}
+      <Row
+        justify="space-between"
+        align="middle"
+        style={{ paddingBottom: "10px" }}
       >
-        <h2>{"Latest"}</h2>
-        <Divider />
-      </div>
+        <Col>
+          <div>
+            <h2>{"Company"}</h2>
+          </div>
+        </Col>
+        <Col>
+          <Button type="default">New</Button>
+        </Col>
+      </Row>
+      {/* <Divider /> */}
       <Table
         columns={columns}
         style={{ paddingTop: "5px" }}
-        dataSource={translations?.map((it: DataType) =>({
+        dataSource={translations?.map((it: DataType) => ({
           key: it.key,
           name: it.name,
           email: it.email,
@@ -109,4 +128,4 @@ const TranslationTable: React.FC<any> = ({data}) => {
   );
 };
 
-export default TranslationTable;
+export default CompanyTable;

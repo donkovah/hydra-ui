@@ -74,7 +74,7 @@ const onChange: TableProps<DataType>["onChange"] = (
   console.log("params", pagination, filters, sorter, extra);
 };
 
-const TranslationTable: React.FC<any> = ({data}) => {
+const TranslationTable: React.FC<any> = ({data, header}) => {
   const [translations, setTranslations] = useState<DataType[]>(testData) 
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const TranslationTable: React.FC<any> = ({data}) => {
           paddingBottom: "5px",
         }}
       >
-        <h2>{"Latest"}</h2>
+        <h2>{header ? header : "Company"}</h2>
         <Divider />
       </div>
       <Table

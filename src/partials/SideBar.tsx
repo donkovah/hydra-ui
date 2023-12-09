@@ -23,7 +23,7 @@ const SideBar: React.FC = () => {
   const sideMenu = [
     {
       key: "companies",
-      path: "/companies",
+      path: "/company",
       label: "Companies",
       isActive: true,
       icon: LaptopOutlined,
@@ -88,8 +88,7 @@ const SideBar: React.FC = () => {
   },[pathname])
   
   return (
-    <>
-      <Sider style={{ background: colorBgContainer }} width={200}>
+    <Sider style={{ background: colorBgContainer }} width={200}>
         <Menu
           mode="inline"
           defaultSelectedKeys={[sideMenu[0].key]}
@@ -117,7 +116,6 @@ const SideBar: React.FC = () => {
           )}
         </Menu>
       </Sider>
-    </>
   );
 };
 export default SideBar;
